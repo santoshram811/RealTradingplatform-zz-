@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { positions } from "../data/data";
+import { positions } from '../data/data';
 
 const Positions = () => {
   return (
@@ -22,8 +22,8 @@ const Positions = () => {
           {positions.map((stock, index) => {
             const curValue = stock.price * stock.qty;
             const isProfit = curValue - stock.avg * stock.qty >= 0.0;
-            const profClass = isProfit ? "profit" : "loss";
-            const dayClass = stock.isLoss ? "loss" : "profit";
+            const profClass = isProfit ? 'profit' : 'loss';
+            const dayClass = stock.isLoss ? 'loss' : 'profit';
 
             return (
               <tr key={index}>
@@ -32,9 +32,7 @@ const Positions = () => {
                 <td>{stock.qty}</td>
                 <td>{stock.avg.toFixed(2)}</td>
                 <td>{stock.price.toFixed(2)}</td>
-                <td className={profClass}>
-                  {(curValue - stock.avg * stock.qty).toFixed(2)}
-                </td>
+                <td className={profClass}>{(curValue - stock.avg * stock.qty).toFixed(2)}</td>
                 <td className={dayClass}>{stock.day}</td>
               </tr>
             );

@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Orders = () => {
   return (
@@ -7,7 +7,7 @@ const Orders = () => {
       <div className="no-orders">
         <p>You haven't placed any orders today</p>
 
-        <Link to={"/"} className="btn">
+        <Link to={'/'} className="btn">
           Get started
         </Link>
       </div>

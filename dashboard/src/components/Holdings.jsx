@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import axios, { all } from "axios";
-import { VerticalGraph } from "./VerticalGraph";
+import React, { useState, useEffect } from 'react';
+import axios, { all } from 'axios';
+import { VerticalGraph } from './VerticalGraph';
 
 // import { holdings } from "../data/data";
 
@@ -8,24 +8,24 @@ const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3002/allHoldings").then((res) => {
+    axios.get('http://localhost:3002/allHoldings').then((res) => {
       // console.log(res.data);
       setAllHoldings(res.data);
     });
   }, []);
 
   // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  const labels = allHoldings.map((subArray) => subArray["name"]);
+  const labels = allHoldings.map((subArray) => subArray['name']);
 
   const data = {
     labels,
     datasets: [
       {
-        label: "Stock Price",
+        label: 'Stock Price',
         data: allHoldings.map((stock) => stock.price),
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
-      },
-    ],
+        backgroundColor: 'rgba(255, 99, 132, 0.5)'
+      }
+    ]
   };
 
   // export const data = {
@@ -64,8 +64,8 @@ const Holdings = () => {
           {allHoldings.map((stock, index) => {
             const curValue = stock.price * stock.qty;
             const isProfit = curValue - stock.avg * stock.qty >= 0.0;
-            const profClass = isProfit ? "profit" : "loss";
-            const dayClass = stock.isLoss ? "loss" : "profit";
+            const profClass = isProfit ? 'profit' : 'loss';
+            const dayClass = stock.isLoss ? 'loss' : 'profit';
 
             return (
               <tr key={index}>
@@ -74,9 +74,7 @@ const Holdings = () => {
                 <td>{stock.avg.toFixed(2)}</td>
                 <td>{stock.price.toFixed(2)}</td>
                 <td>{curValue.toFixed(2)}</td>
-                <td className={profClass}>
-                  {(curValue - stock.avg * stock.qty).toFixed(2)}
-                </td>
+                <td className={profClass}>{(curValue - stock.avg * stock.qty).toFixed(2)}</td>
                 <td className={profClass}>{stock.net}</td>
                 <td className={dayClass}>{stock.day}</td>
               </tr>
@@ -88,13 +86,13 @@ const Holdings = () => {
       <div className="row">
         <div className="col">
           <h5>
-            29,875.<span>55</span>{" "}
+            29,875.<span>55</span>{' '}
           </h5>
           <p>Total investment</p>
         </div>
         <div className="col">
           <h5>
-            31,428.<span>95</span>{" "}
+            31,428.<span>95</span>{' '}
           </h5>
           <p>Current value</p>
         </div>
